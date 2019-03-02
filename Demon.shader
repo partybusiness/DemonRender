@@ -71,8 +71,8 @@ Shader "Unlit/Demon"
 
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.uv.x += round((UNITY_ACCESS_INSTANCED_PROP(_Rotation) + viewRot) * _Columns) / _Columns; //offset uv based on rotation
-				o.uv.y += round((UNITY_ACCESS_INSTANCED_PROP(_Expression)) * _Rows) / _Rows; //offset uv based on expression or animation
+				o.uv.x += floor((UNITY_ACCESS_INSTANCED_PROP(_Rotation) + viewRot) * _Columns) / _Columns; //offset uv based on rotation
+				o.uv.y += floor((UNITY_ACCESS_INSTANCED_PROP(_Expression)) * _Rows) / _Rows; //offset uv based on expression or animation
 
 				return o;
 			}

@@ -60,12 +60,12 @@ namespace DemonRender
         void Update()
         {
             var tranMatrix = new Matrix4x4();
-            var moveVector = Vector3.forward * forwardSpeed * Time.deltaTime;
+            var moveVector = Vector3.left * forwardSpeed * Time.deltaTime;
             for (int i = 0; i < rotations.Count; i++)
             {
                 rotations[i] += Time.deltaTime * rotationSpeed;
-                //tranMatrix.SetTRS(Quaternion.Euler(0,Mathf.Floor(rotations[i]*8f)*42.5f,0) * moveVector, Quaternion.identity, Vector3.one);
-                tranMatrix.SetTRS(Quaternion.Euler(0, Mathf.Floor(rotations[i] * 8f) * 45f, 0) * moveVector, Quaternion.identity, Vector3.one);
+                //tranMatrix.SetTRS(Quaternion.Euler(0, Mathf.Round(rotations[i] * 8f) * 45f, 0) * moveVector, Quaternion.identity, Vector3.one); //if you want discrete rotation
+                tranMatrix.SetTRS(Quaternion.Euler(0, rotations[i] * 360f, 0) * moveVector, Quaternion.identity, Vector3.one);
                 matrices[i] *= tranMatrix;
             }
             properties.SetFloatArray("_Rotation", rotations.ToArray());
