@@ -1,6 +1,8 @@
 # DemonRender
 A stupid shader trick to render 2D billboard monsters in Unity
 
+![Demon rendering](https://raw.githubusercontent.com/partybusiness/DemonRender/master/demonMovement.gif)
+
 This relies on instanced rendering in Unity, which allows you to pass properties to each instance. In this case, we pass the rotation of each demon and an "expression" value, which will select rows and columns from the demon's texture.
 
 The vertices of the mesh are actually collapsed to a point and when rendered the shader offsets their position relative to the camera based on the secondary UVs. In theory I could have used a single set of UVs but I'd need to do extra math.
